@@ -1,0 +1,40 @@
+workflows:
+  android-debug-apk:
+    name: BakeryDaily - Debug APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      java: 21
+    scripts:
+      - name: Verify Gradle wrapper
+        script: |
+          chmod +x gradlew
+          ./gradlew --version
+      - name: Run unit tests
+        script: ./gradlew test
+      - name: Build debug APK
+        script: ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
+      - app/build/reports/tests/**
+
+  android-release-apk:
+    name: BakeryDaily - Signed Release APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      java: 21
+      android_signing:
+        - bakery_release_keystore
+    scripts:
+      - name: Verify Gradle wrapper
+        script: |
+          chmod +x gradlew
+          ./gradlew --version
+      - name: Run unit tests
+        script: ./gradlew test
+      - name: Build signed release APK
+        script: ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/apk/release/*.apk
+      - app/build/reports/tests/**
