@@ -122,7 +122,7 @@ object SettingsStore {
 /* Bakery ViewModel                                                           */
 /* -------------------------------------------------------------------------- */
 
-private class BakeryVM(
+class BakeryVM(
     app: Application
 ) : AndroidViewModel(app) {
 
@@ -262,7 +262,7 @@ private class BakeryVM(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun BakerySelection(
+fun BakerySelection(
     nav: NavController,
     vm: BakeryVM = viewModel()
 ) {
@@ -654,7 +654,7 @@ private fun BakerySelection(
 /* Record ViewModel                                                           */
 /* -------------------------------------------------------------------------- */
 
-private class RecordVM(
+class RecordVM(
     app: Application
 ) : AndroidViewModel(app) {
 
@@ -810,7 +810,7 @@ private data class Draft(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Home(
+fun Home(
     nav: NavController,
     id: Long,
     vm: RecordVM = viewModel()
@@ -1684,7 +1684,7 @@ private fun MetricCard(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Stats(
+fun Stats(
     nav: NavController,
     id: Long
 ) {
